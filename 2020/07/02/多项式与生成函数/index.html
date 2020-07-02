@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>多项式与生成函数 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="多项式与生成函数">
+<meta property="og:type" content="article">
+<meta property="og:title" content="多项式与生成函数">
+<meta property="og:url" content="http://yoursite.com/2020/07/02/%E5%A4%9A%E9%A1%B9%E5%BC%8F%E4%B8%8E%E7%94%9F%E6%88%90%E5%87%BD%E6%95%B0/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="多项式与生成函数">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-07-02T07:26:12.124Z">
+<meta property="article:modified_time" content="2020-07-01T10:51:48.000Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-多项式与生成函数" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/07/02/%E5%A4%9A%E9%A1%B9%E5%BC%8F%E4%B8%8E%E7%94%9F%E6%88%90%E5%87%BD%E6%95%B0/" class="article-date">
+  <time datetime="2020-07-02T07:26:12.124Z" itemprop="datePublished">2020-07-02</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      多项式与生成函数
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>多项式与生成函数</strong></p>
+<a id="more"></a>
+
+<p><a href="https://www.luogu.com.cn/blog/1445353309froggy/duo-xiang-shi-tai-za-hui" target="_blank" rel="noopener">参考</a></p>
+<p>总是忘记多项式板子。。。</p>
+<p>这里推一下柿子方便记忆</p>
+<h2 id="一些规定"><a href="#一些规定" class="headerlink" title="一些规定"></a>一些规定</h2><p>本文中的 $\times$<code>\times</code>皆为卷积，表示$(A\times B)<em>i=\sum</em>{j+k=i}A_j\times B_k$</p>
+<p>未特殊说明的话都在$\mod 998244353$意义下</p>
+<h2 id="FFT-NTT-MTT"><a href="#FFT-NTT-MTT" class="headerlink" title="FFT,NTT,MTT"></a>FFT,NTT,MTT</h2><p>略</p>
+<h2 id="INV"><a href="#INV" class="headerlink" title="INV"></a>INV</h2><p>多项式求逆</p>
+<p>已知函数$f$,求函数$g$满足$f\times g\equiv 1\mod x^n$</p>
+<p>考虑倍增</p>
+<p>假设已经求出函数$h$满足$f\times h\equiv 1\mod x^{n/2}$</p>
+<p>$$g-h\equiv 0\mod x^{n/2}$$</p>
+<p>两边同时平方</p>
+<p>$$g^2-2gh+h^2\equiv 0\mod x^n$$</p>
+<p>至于为什么可以这么做，考虑函数$A\equiv 0\mod x^n$,那么$\forall i\in[0,n)$,$A_i=0$</p>
+<p>所以$A^2$中$\forall i\in[0,2n),A^2_i=0$</p>
+<p>两边同时乘以$f$</p>
+<p>$$g-2h+h^2f\equiv 0\mod x^n$$</p>
+<p>$$g=2h-h^2f$$</p>
+<h2 id="LN"><a href="#LN" class="headerlink" title="LN"></a>LN</h2><p>多项式求$\ln$</p>
+<p>已知函数$f(x)$,求函数$g(x)$满足$g(x)\equiv \ln f(x)\mod x^n$</p>
+<p>$$\ln’ (x)=\frac{1}{x}$$</p>
+<p>$$\ln’(f(x))=\frac{f’(x)}{f(x)}$$</p>
+<p>链式求导</p>
+<p>之后求积分</p>
+<h2 id="EXP"><a href="#EXP" class="headerlink" title="EXP"></a>EXP</h2><p>多项式求$\exp$</p>
+<p>已知函数$f$,求函数$g$满足$g\equiv e^f\mod x^n$</p>
+<h3 id="泰勒展开"><a href="#泰勒展开" class="headerlink" title="泰勒展开"></a>泰勒展开</h3><p>$$f(x)=f(x_0)+\sum_{i=1}\frac{f^{(i)}(x_0)}{i!}\times (x-x_0)^i$$</p>
+<p>将$f(x)$在$x_0$处泰勒展开，即构造一个函数，使他在$x_0$处的任意阶导数等于$f(x)$相同</p>
+<h3 id="牛顿迭代"><a href="#牛顿迭代" class="headerlink" title="牛顿迭代"></a>牛顿迭代</h3><p>已知函数$f$,求函数$g$满足$f(g(x))\equiv 0 \mod x^n$</p>
+<p>考虑倍增</p>
+<p>假设已知函数$h$满足$f(h(x))\equiv 0\mod x^{n/2}$</p>
+<p>将$f$在$h(x)$处泰勒展开</p>
+<p>$$f(g(x))=f(h(x))+\sum_{i=1}\frac{f^{(i)}(h(x))}{i!}\times (g(x)-h(x))^i$$</p>
+<p>显然，$f(g(x))\equiv 0 \mod x^{n/2}$</p>
+<p>所以，$g(x)\equiv h(x)\mod x^{n/2}$</p>
+<p>所以$\forall i&gt;1,(g(x)-h(x))^i\equiv 0\mod x^n$</p>
+<p>所以$f(g(x))\equiv f(h(x))+f’(h(x))\times (g(x)-h(x))\equiv 0\mod x^n$</p>
+<p>$$g(x)\equiv h(x)-\frac{f(h(x))}{f’(h(x))}\mod x^n$$</p>
+<h3 id="EXP-1"><a href="#EXP-1" class="headerlink" title="EXP"></a>EXP</h3><p>两边同时取$\ln$</p>
+<p>$$\ln(g(x))\equiv f(x)\mod x^n$$</p>
+<p>设$G(g(x))=\ln(g(x))-f(x)\mod x^n$</p>
+<p>套牛顿迭代</p>
+<p>假设已经求出$G(h(x))\equiv 0\mod x^{n/2}$</p>
+<p>$g(x)=h(x)-\frac{G(h(x))}{G’(h(x))}$</p>
+<p>$h(x)$是自变量，$f(x)$与他无关，算常量</p>
+<p>$$G’(h(x))=\frac{1}{h(x)}$$</p>
+<p>$$g=h\times (1-\ln h+f)$$</p>
+<hr>
+<p>留坑待填</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/07/02/%E5%A4%9A%E9%A1%B9%E5%BC%8F%E4%B8%8E%E7%94%9F%E6%88%90%E5%87%BD%E6%95%B0/" data-id="ckc4gwskh0008bk954rf96hea" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/07/02/Ububtu%2019.10%E5%AE%89%E8%A3%85codeblocks(%E4%B8%96%E4%B8%8A%E6%9C%80%E5%BF%AB%EF%BC%89/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Ububtu 19.10安装codeblocks(世上最快）
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/07/02/note/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">一些数学推导</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/OI/" rel="tag">OI</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ubuntu/" rel="tag">Ubuntu</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/math/" rel="tag">math</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/windows/" rel="tag">windows</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%89%A9%E7%90%86/" rel="tag">物理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%A2%98%E8%A7%A3/" rel="tag">题解</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/OI/" style="font-size: 20px;">OI</a> <a href="/tags/Ubuntu/" style="font-size: 10px;">Ubuntu</a> <a href="/tags/math/" style="font-size: 10px;">math</a> <a href="/tags/windows/" style="font-size: 10px;">windows</a> <a href="/tags/%E7%89%A9%E7%90%86/" style="font-size: 20px;">物理</a> <a href="/tags/%E9%A2%98%E8%A7%A3/" style="font-size: 15px;">题解</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/07/02/cmd%E5%88%A0%E9%99%A4%E5%88%86%E5%8C%BA/">cmd删除分区</a>
+          </li>
+        
+          <li>
+            <a href="/2020/07/02/%E4%B8%BB%E5%AE%9A%E7%90%86%E5%88%86%E6%9E%90/">主定理分析</a>
+          </li>
+        
+          <li>
+            <a href="/2020/07/02/%E5%BF%AB%E9%80%9F%E6%B2%83%E5%B0%94%E4%BB%80%E5%8F%98%E6%8D%A2/">快速沃尔什变换</a>
+          </li>
+        
+          <li>
+            <a href="/2020/07/02/%E6%96%AF%E7%89%B9%E6%9E%97%E6%95%B0%E4%B8%8E%E4%B8%8A%E5%8D%87%E5%B9%82%E4%B8%8E%E4%B8%8B%E9%99%8D%E5%B9%82/">斯特林数与上升幂与下降幂</a>
+          </li>
+        
+          <li>
+            <a href="/2020/07/02/%E7%89%A9%E7%90%86%E5%BF%85%E4%BF%AE2%E7%AC%94%E8%AE%B0/">物理必修2笔记</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
