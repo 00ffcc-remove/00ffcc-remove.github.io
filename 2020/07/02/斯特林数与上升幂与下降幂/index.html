@@ -95,7 +95,6 @@
       
         <p><strong>重新审视 Stirling Number</strong></p>
 <a id="more"></a>
-
 <p>转载自<a href="http://www.mamicode.com/info-detail-1982164.html" target="_blank" rel="noopener">http://www.mamicode.com/info-detail-1982164.html</a></p>
 <p>原文地址<a href="http://www.cnblogs.com/Sdchr/p/7462045.html" target="_blank" rel="noopener">http://www.cnblogs.com/Sdchr/p/7462045.html</a></p>
 <p>原文markdown挂掉没法看了，转载顺便修一下</p>
@@ -112,9 +111,10 @@
 <p>例如, 对于集合 ${4, 2, 5, 1}$ , 我们可以任意的定序, 即进行无穷次 <code>random_shuffle</code> , 那么得到 $(4, 2, 5, 1) , (4, 2, 1, 5) , ……$</p>
 <p>无标号计数 与 带标号计数 之间存在数量关系, 即 定序计数 与 任意定序计数 的关系</p>
 <p>设我们计数的对象为 $m$ 个, 无标号计数的答案为 $x$ , 带标号计数的答案为 $y$ , 那么 $y=m!x$ </p>
-<h3 id="2-下降幂与上升幂"><a href="#2-下降幂与上升幂" class="headerlink" title="2.　下降幂与上升幂"></a>2.　下降幂与上升幂</h3><p>$$x ^ {\overline{n}} = x (x + 1) (x + 2) … (x + n - 1)$$<br>$$x ^ {\underline{n}} = x (x - 1) (x - 2) … (x - n + 1)$$</p>
-<p>上升幂与下降幂的关系<br>$$(-x)^ {\underline{n}} = (-1) ^ n x ^ {\overline{n}}$$<br>$$(-x)^ {\overline{n}} = (-1) ^ n x ^ {\underline{n}}$$<br>证明<br>$$(-x) ^ {\underline{n}}$$<br>$$= (-x) (-x - 1) (-x - 2) (-x - n + 1) $$<br>$$= (-1) ^ n x (x + 1) (x + 2) … (x + n - 1) $$<br>$$= (-1) ^ n x ^ {\overline{n}}$$<br>二项式定理与下降幂的关系<br>$$\binom{n}{k} = \frac{n !}{k ! (n - k) !} = \frac{n ^ {\underline{k}}}{k!}$$</p>
-<h3 id="3-第二类斯特林数"><a href="#3-第二类斯特林数" class="headerlink" title="3.　第二类斯特林数"></a>3.　第二类斯特林数</h3><p>第二类斯特林数写作 $\left{ \begin{aligned} n \ k \end{aligned} \right}$ 或 $S_2(n, k)$ , 表示 $n$ 个带标号元素划分到 $k$ 个无标号非空集合的方案数.</p>
+<h3 id="2-下降幂与上升幂"><a href="#2-下降幂与上升幂" class="headerlink" title="2.　下降幂与上升幂"></a>2.　下降幂与上升幂</h3><script type="math/tex; mode=display">x ^ {\overline{n}} = x (x + 1) (x + 2) ... (x + n - 1)</script><script type="math/tex; mode=display">x ^ {\underline{n}} = x (x - 1) (x - 2) ... (x - n + 1)</script><p>上升幂与下降幂的关系</p>
+<script type="math/tex; mode=display">(-x)^ {\underline{n}} = (-1) ^ n x ^ {\overline{n}}</script><script type="math/tex; mode=display">(-x)^ {\overline{n}} = (-1) ^ n x ^ {\underline{n}}</script><p>证明</p>
+<script type="math/tex; mode=display">(-x) ^ {\underline{n}}</script><script type="math/tex; mode=display">= (-x) (-x - 1) (-x - 2) (-x - n + 1)</script><script type="math/tex; mode=display">= (-1) ^ n x (x + 1) (x + 2) ... (x + n - 1)</script><script type="math/tex; mode=display">= (-1) ^ n x ^ {\overline{n}}</script><p>二项式定理与下降幂的关系</p>
+<script type="math/tex; mode=display">\binom{n}{k} = \frac{n !}{k ! (n - k) !} = \frac{n ^ {\underline{k}}}{k!}</script><h3 id="3-第二类斯特林数"><a href="#3-第二类斯特林数" class="headerlink" title="3.　第二类斯特林数"></a>3.　第二类斯特林数</h3><p>第二类斯特林数写作 $\left\{ \begin{aligned} n \\ k \end{aligned} \right\}$ 或 $S_2(n, k)$ , 表示 $n$ 个带标号元素划分到 $k$ 个无标号非空集合的方案数.</p>
 <p>第二类斯特林数应该是除了二项式系数外, 最常用的特殊的数.</p>
 <p><del>我不会告诉你写 $S_2(n, k)$ 只是因为我想偷懒.</del></p>
 <p>探究一些特殊的情况.</p>
@@ -134,17 +134,14 @@
 <p>我们尝试利用组合推理的方法, 将 $x^n$ 视为这样一个问题:</p>
 <p><em>将 $n$ 个带标号元素, 每个元素染成 $x$ 种颜色中的一种.</em></p>
 <p>我们还可以这样考虑: 枚举最终染的颜色数 $k$, 在 $x$ 种元素中选择 $k$ 种, 计算将 $n$ 个元素划分成 $k$ 个带标号集合. 而 $n$ 个元素划分成 $k$ 个带标号集合的方案数, 等于 $k!$ 乘上划分成 $k$ 个无标号集合的方案数.</p>
-<p>所以<br>$$x ^ n = \sum_{k} \binom{x}{k} k! S_2(n, k) = \sum_{k} S_2(n, k) x ^ {\underline{k}}$$</p>
-<p>根据上升幂与下降幂的关系, 我们还可以得到通常幂与上升幂的关系.</p>
-<p>$$(-x) ^ n = (-1) ^ n x ^ n = \sum_{k} S_2(n, k) (-1) ^ k x ^ {\underline{k}}$$</p>
-<p>$$x ^ n = \sum_{k} S_2(n, k) (-1) ^ {n - k} x ^ {\underline{k}}$$</p>
-<p>考虑用容斥原理直接计算第二类斯特林数.</p>
+<p>所以</p>
+<script type="math/tex; mode=display">x ^ n = \sum_{k} \binom{x}{k} k! S_2(n, k) = \sum_{k} S_2(n, k) x ^ {\underline{k}}</script><p>根据上升幂与下降幂的关系, 我们还可以得到通常幂与上升幂的关系.</p>
+<script type="math/tex; mode=display">(-x) ^ n = (-1) ^ n x ^ n = \sum_{k} S_2(n, k) (-1) ^ k x ^ {\underline{k}}</script><script type="math/tex; mode=display">x ^ n = \sum_{k} S_2(n, k) (-1) ^ {n - k} x ^ {\underline{k}}</script><p>考虑用容斥原理直接计算第二类斯特林数.</p>
 <p>首先, 我们通过除以系数 $k!$ , 考虑计算将 $n$ 个带标号元素划分到 $k$ 个带标号集合的方案数.</p>
 <p>我们假装 $k$ 个集合一定都会被划分到, 那么每个元素有 $k$ 种选择, 所以答案为 $k ^ n$ , 但这样会算多. 于是假装 $k$ 个集合中有一个集合没有被划分到, 那么出现这种情况的个数为 $\binom{k}{1}$ , 那么每个元素有 $k - 1$ 种选择, 所以答案为 $k ^ {n - 1}$ , 但这样会算少. 以此类推.</p>
 <p>我们考虑容斥原理, 枚举假装有多少个集合没有被划分到</p>
-<p>$$S_2(n, k) = \sum_{i} (-1) ^ i \binom{k}{i} (k - i) ^ n = \sum_{i} \binom{k}{i} (-1) ^ i (k - i) ^ n$$</p>
-<p>这是二项卷积的形式, 利用指数生成函数, 我们就可以在 $O(k \log k)$ 进行求解 $S_2(n, 1), S_2(n, 2), …, S_2(n, n)$ .</p>
-<h3 id="4-第一类斯特林数"><a href="#4-第一类斯特林数" class="headerlink" title="4.　第一类斯特林数"></a>4.　第一类斯特林数</h3><p>第一类斯特林数写作 $\left[ \begin{aligned} n \ k \end{aligned} \right]$ 或 $S_1(n, k)$ , 表示将 n 个带标号元素划分到 k 个无标号轮换的方案数.</p>
+<script type="math/tex; mode=display">S_2(n, k) = \sum_{i} (-1) ^ i \binom{k}{i} (k - i) ^ n = \sum_{i} \binom{k}{i} (-1) ^ i (k - i) ^ n</script><p>这是二项卷积的形式, 利用指数生成函数, 我们就可以在 $O(k \log k)$ 进行求解 $S_2(n, 1), S_2(n, 2), …, S_2(n, n)$ .</p>
+<h3 id="4-第一类斯特林数"><a href="#4-第一类斯特林数" class="headerlink" title="4.　第一类斯特林数"></a>4.　第一类斯特林数</h3><p>第一类斯特林数写作 $\left[ \begin{aligned} n \\ k \end{aligned} \right]$ 或 $S_1(n, k)$ , 表示将 n 个带标号元素划分到 k 个无标号轮换的方案数.</p>
 <p>轮换是一种奇妙的结构, $[a, b, c, d] = [b, c, d, a] = [c, d, a, b] = [d, a, b, c]$ , 直观上的理解就是一个环.</p>
 <p>同样地, 探究一些基本的情况.</p>
 <p>1.　　$S_1(n, 0) = S_2(n, 0) = [n = 0]$ .</p>
@@ -152,18 +149,14 @@
 <p>说明:固定轮换的第 $1$ 位为 $1$ , 那么剩下有 $(n - 1)!$ 种排列方案.</p>
 <p>3.　　$S_1(n, 2) = (n - 1)! H_{n - 1}$ .</p>
 <p>说明:对于不连通的计数, 我们的常见做法是然后枚举 $1$ 所在的连通块的大小, 这里同样如此.</p>
-<p>$$S_1(n, 2)$$<br>$$= \sum_{x = 1} ^ {n - 1} \binom{n - 1}{x - 1} (x - 1)! (n - x - 1)!$$<br>$$=\sum_{x = 1} ^ {n - 1} \frac{(n-1)!}{(x-1)! (n - x)!} (x - 1)! (n - x - 1)!$$<br>$$= (n - 1)! H_{n - 1}$$</p>
-<p>4.　　$S_1(n, n-1) = S_2(n, n-1) = \binom{n}{2}$ .</p>
+<script type="math/tex; mode=display">S_1(n, 2)</script><script type="math/tex; mode=display">= \sum_{x = 1} ^ {n - 1} \binom{n - 1}{x - 1} (x - 1)! (n - x - 1)!</script><script type="math/tex; mode=display">=\sum_{x = 1} ^ {n - 1} \frac{(n-1)!}{(x-1)! (n - x)!} (x - 1)! (n - x - 1)!</script><script type="math/tex; mode=display">= (n - 1)! H_{n - 1}</script><p>4.　　$S_1(n, n-1) = S_2(n, n-1) = \binom{n}{2}$ .</p>
 <p>5.　　$S_1(n, n) = S_2(n, n) = 1$ .</p>
 <p>6.　　当 $k &gt; n$ 时, $S_1(n, k) = S_2(n, k) = \binom{n}{k} = 0$ </p>
-<h5 id="第一类斯特林数的通项公式"><a href="#第一类斯特林数的通项公式" class="headerlink" title="第一类斯特林数的通项公式"></a>第一类斯特林数的通项公式</h5><p>$$\left[\begin{aligned}n\k\end{aligned}\right]=\left[\begin{aligned}n-1\k-1\end{aligned}\right]+\left[\begin{aligned}n-1\k\end{aligned}\right]\times (n-1)$$</p>
-<p>考虑将 $x ^ {\overline{n}}$ 用通常幂进行表示.</p>
-<p>$$\sum_{i=0}^{n}S_1(n,i)x^i=x^{\overline{n}}$$</p>
-<h5 id="证明"><a href="#证明" class="headerlink" title="证明"></a>证明</h5><p>数学归纳法+通项公式</p>
+<h5 id="第一类斯特林数的通项公式"><a href="#第一类斯特林数的通项公式" class="headerlink" title="第一类斯特林数的通项公式"></a>第一类斯特林数的通项公式</h5><script type="math/tex; mode=display">\left[\begin{aligned}n\\k\end{aligned}\right]=\left[\begin{aligned}n-1\\k-1\end{aligned}\right]+\left[\begin{aligned}n-1\\k\end{aligned}\right]\times (n-1)</script><p>考虑将 $x ^ {\overline{n}}$ 用通常幂进行表示.</p>
+<script type="math/tex; mode=display">\sum_{i=0}^{n}S_1(n,i)x^i=x^{\overline{n}}</script><h5 id="证明"><a href="#证明" class="headerlink" title="证明"></a>证明</h5><p>数学归纳法+通项公式</p>
 <p>具体证明在<a href="https://www.luogu.com.cn/blog/chtholly-willem/solution-p5408" target="_blank" rel="noopener">这里</a></p>
 <p>利用上升幂与下降幂的关系, 我们可以将下降幂用通常幂表示.</p>
-<p>$$x^{\underline{n}}$$<br>$$=(-1)^n(-x)^{\overline{n}}$$<br>$$=(-1)^n\sum_{k}S_1(n,k)(-x)^k$$<br>$$=\sum_{k}(-1)^{n-k}S_1(n, k)x^k$$</p>
-<p>考虑利用容斥原理求第一类斯特林数.</p>
+<script type="math/tex; mode=display">x^{\underline{n}}</script><script type="math/tex; mode=display">=(-1)^n(-x)^{\overline{n}}</script><script type="math/tex; mode=display">=(-1)^n\sum_{k}S_1(n,k)(-x)^k</script><script type="math/tex; mode=display">=\sum_{k}(-1)^{n-k}S_1(n, k)x^k</script><p>考虑利用容斥原理求第一类斯特林数.</p>
 <p>$S_1(n, k)  = \sum_{i = 0} ^ {k - 1} (-1) ^ i \binom{k}{i} (\sum_{x_1 + x_2 + … + x_{k - i} = n} \binom{n}{x_1, x_2, …, x_n} \prod_{j = 1} ^ {k - i} (x_j - 1)!$ .</p>
 <p>令 $F = \sum_{i = 0} ^ n (i - 1)! \frac{x ^ i}{i!} = \frac{x ^ i}{i}$ .</p>
 <p>那么 $S_1(n, k) = \sum_{i = 0} ^ {k - 1} \binom{k}{i} (-1) ^ i F ^ {k - i} (n)$ .</p>
@@ -174,7 +167,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/07/02/%E6%96%AF%E7%89%B9%E6%9E%97%E6%95%B0%E4%B8%8E%E4%B8%8A%E5%8D%87%E5%B9%82%E4%B8%8E%E4%B8%8B%E9%99%8D%E5%B9%82/" data-id="ckc4iljdo000ff895c93acwp6" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/07/02/%E6%96%AF%E7%89%B9%E6%9E%97%E6%95%B0%E4%B8%8E%E4%B8%8A%E5%8D%87%E5%B9%82%E4%B8%8E%E4%B8%8B%E9%99%8D%E5%B9%82/" data-id="ckc5tqiz4000iok950k5w92vd" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/math/" rel="tag">math</a></li></ul>
@@ -195,9 +188,9 @@
     </a>
   
   
-    <a href="/2020/07/02/%E7%89%A9%E7%90%86%E5%BF%85%E4%BF%AE2%E7%AC%94%E8%AE%B0/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2020/07/02/%E7%89%A9%E7%90%86%E9%80%89%E4%BF%AE3-1%E7%AC%94%E8%AE%B0/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">物理必修2笔记</div>
+      <div class="article-nav-title">物理选修3-1笔记</div>
     </a>
   
 </nav>

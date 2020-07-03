@@ -96,7 +96,6 @@
         <h3 id="题面"><a href="#题面" class="headerlink" title="题面"></a>题面</h3><p><a href="https://www.luogu.com.cn/problem/P5328" target="_blank" rel="noopener">在这里</a></p>
 <h3 id="题意简述"><a href="#题意简述" class="headerlink" title="题意简述"></a>题意简述</h3><p>给定 $n$ 条形如$y=k_ix+b_i$的直线，求每条直线的最好排名</p>
 <a id="more"></a>
-
 <h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><p>排名为$1$的直线显然构成一个下凸壳,直接半平面交</p>
 <p>排名为$2$的直线显然也构成一个下凸壳，但不能直接求，因为有可能下凸壳上的某条直线被完全覆盖了不止一次，这样它的排名显然不能为$2$</p>
 <p>于是有这样一个算法：删去排名为$1$的所有直线，对于排名为$1$的所有直线，二分出它作为$rank1$存在的区间$[l,r]$，这显然是一个连续的区间。将区间$(l,r)+1$,表示这个区间内的数都被它覆盖了一次，最后对于去掉$rank1$直线的集合的下凸壳中的每条直线进行考虑，若它作为最大值存在的区间内存在一个整数满足它只被覆盖了一次，那么这条直线就可以作为$rank2$</p>
@@ -113,7 +112,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/07/03/%E9%A2%98%E8%A7%A3%20P5328%20[ZJOI2019]%E6%B5%99%E6%B1%9F%E7%9C%81%E9%80%89%20%E9%A2%98%E8%A7%A3/" data-id="ckc5sk4k70002hs95gqxb32uk" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/07/03/%E9%A2%98%E8%A7%A3%20P5328%20[ZJOI2019]%E6%B5%99%E6%B1%9F%E7%9C%81%E9%80%89%20%E9%A2%98%E8%A7%A3/" data-id="ckc5tqizb000tok95gm1b5n9q" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%A2%98%E8%A7%A3/" rel="tag">题解</a></li></ul>

@@ -95,25 +95,22 @@
       
         <p><strong>分析递归算法的时间复杂度</strong></p>
 <a id="more"></a>
-
 <h2 id="一些定义"><a href="#一些定义" class="headerlink" title="一些定义"></a>一些定义</h2><p>$\Omicron$:小于等于</p>
 <p>$\Omega $:大于等于</p>
 <p>$\Theta$:等于 </p>
-<h2 id="尝试推导"><a href="#尝试推导" class="headerlink" title="尝试推导"></a>尝试推导</h2><p>$$T(n)=a\times T(\frac{n}{b})+F(n)$$</p>
-<h3 id="尝试暴力找规律求每一层的运算次数"><a href="#尝试暴力找规律求每一层的运算次数" class="headerlink" title="尝试暴力找规律求每一层的运算次数"></a>尝试暴力找规律求每一层的运算次数</h3><ol>
-<li>$$F(n)$$</li>
-<li>$$a\times F(\frac{n}{b})$$</li>
-<li>$$a^2\times F(\frac{n}{b^2})$$</li>
-<li>$$a^3\times F(\frac{n}{b^3})$$</li>
+<h2 id="尝试推导"><a href="#尝试推导" class="headerlink" title="尝试推导"></a>尝试推导</h2><script type="math/tex; mode=display">T(n)=a\times T(\frac{n}{b})+F(n)</script><h3 id="尝试暴力找规律求每一层的运算次数"><a href="#尝试暴力找规律求每一层的运算次数" class="headerlink" title="尝试暴力找规律求每一层的运算次数"></a>尝试暴力找规律求每一层的运算次数</h3><ol>
+<li><script type="math/tex; mode=display">F(n)</script></li>
+<li><script type="math/tex; mode=display">a\times F(\frac{n}{b})</script></li>
+<li><script type="math/tex; mode=display">a^2\times F(\frac{n}{b^2})</script></li>
+<li><script type="math/tex; mode=display">a^3\times F(\frac{n}{b^3})</script></li>
 </ol>
-<h3 id="总的运算次数"><a href="#总的运算次数" class="headerlink" title="总的运算次数"></a>总的运算次数</h3><p>$$\sum_{i=0}^{\log_b^n}a^i\times F(\frac{n}{b^i})$$</p>
-<p>然后就不会了</p>
+<h3 id="总的运算次数"><a href="#总的运算次数" class="headerlink" title="总的运算次数"></a>总的运算次数</h3><script type="math/tex; mode=display">\sum_{i=0}^{\log_b^n}a^i\times F(\frac{n}{b^i})</script><p>然后就不会了</p>
 <p>留坑待填</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/07/02/%E4%B8%BB%E5%AE%9A%E7%90%86%E5%88%86%E6%9E%90/" data-id="ckc4iljdk0009f8957ggee5h0" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/07/02/%E4%B8%BB%E5%AE%9A%E7%90%86%E5%88%86%E6%9E%90/" data-id="ckc5tqiz0000bok952njba7y2" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OI/" rel="tag">OI</a></li></ul>
